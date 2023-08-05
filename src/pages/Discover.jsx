@@ -1,10 +1,13 @@
 import { genres } from '../assets/constants';
 import SongCard from '../components/SongCard';
 import { useGetChartQuery } from '../redux/services/ShazamCore';
+import Error from '../components/Error';
 
 const Discover = () => {
   const genericTitle = 'Pop';
   const { data, isFetching, error } = useGetChartQuery;
+
+  if (error) return <Error />;
   return (
     <div className="flex flex-col">
       <div className="w-full flex flex-col sm:flex-row mt-4 items-center justify-between">
